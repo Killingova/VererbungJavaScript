@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Vererbung in JavaScript</title>
+</head>
+<body>
+<div id="ausgabe"></div> <!-- Bereich für die Ausgabe der Ergebnisse -->
+
+<script>
+  // Funktion zum Hinzufügen von Text zum Ausgabebereich
+  function addToAusgabe(message) {
+    const ausgabeElement = document.getElementById('ausgabe');
+    ausgabeElement.innerHTML += message + '<br>';
+  }
+
+  // Definiere eine Funktion 'Fahrzeug', die als Konstruktor für Fahrzeuge dient.
+  function Fahrzeug() {}
+
+  // Füge der Prototypenkette von 'Fahrzeug' eine Methode 'start' hinzu.
+  Fahrzeug.prototype.start = function() {
+    addToAusgabe("Fahrzeug startet");
+  };
+
+  // Definiere eine weitere Funktion 'Auto', die als Konstruktor für Autos dient.
+  function Auto() {}
+
+  // Setze den Prototyp von 'Auto' auf eine neue Instanz von 'Fahrzeug'.
+  Auto.prototype = Object.create(Fahrzeug.prototype);
+  Auto.prototype.constructor = Auto;
+
+  // Füge dem Prototyp von 'Auto' eine neue Methode 'hupe' hinzu.
+  Auto.prototype.hupe = function() {
+    addToAusgabe("Auto hupt");
+  };
+
+  // Erstelle eine neue Instanz von 'Auto'.
+  const meinAuto = new Auto();
+
+  // Rufe die Methoden 'start' und 'hupe' auf.
+  meinAuto.start(); // Zeigt "Fahrzeug startet" auf der Webseite
+  meinAuto.hupe();  // Zeigt "Auto hupt" auf der Webseite
+</script>
+</body>
+</html>

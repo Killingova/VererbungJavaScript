@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>ES6 Klassenvererbung in JavaScript</title>
+</head>
+<body>
+<div id="ausgabe"></div> <!-- Bereich für die Ausgabe der Ergebnisse -->
+
+<script>
+  // Funktion zum Hinzufügen von Text zum Ausgabebereich
+  function addToAusgabe(message) {
+    const ausgabeElement = document.getElementById('ausgabe');
+    ausgabeElement.innerHTML += message + '<br>';
+  }
+
+  // Definiere eine Klasse 'Fahrzeug' mit einer Methode 'start'.
+  class Fahrzeug {
+    start() {
+      addToAusgabe("Fahrzeug startet");
+    }
+  }
+
+  // Definiere eine Klasse 'Auto', die von 'Fahrzeug' erbt.
+  class Auto extends Fahrzeug {
+    hupe() {
+      addToAusgabe("Auto hupt");
+    }
+  }
+
+  // Erstelle eine neue Instanz von 'Auto'.
+  const meinAuto = new Auto();
+
+  // Rufe die Methoden 'start' und 'hupe' auf.
+  meinAuto.start(); // Zeigt "Fahrzeug startet" auf der Webseite
+  meinAuto.hupe();  // Zeigt "Auto hupt" auf der Webseite
+</script>
+</body>
+</html>

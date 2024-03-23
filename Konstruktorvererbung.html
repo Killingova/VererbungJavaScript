@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Konstruktorvererbung in JavaScript</title>
+</head>
+<body>
+<div id="ausgabe"></div> <!-- Bereich für die Ausgabe der Ergebnisse -->
+
+<script>
+  // Funktion zum Hinzufügen von Text zum Ausgabebereich
+  function addToAusgabe(message) {
+    const ausgabeElement = document.getElementById('ausgabe');
+    ausgabeElement.innerHTML += message + '<br>';
+  }
+
+  // Definiere die Funktion 'Fahrzeug', die als Konstruktor für Fahrzeuge dient.
+  function Fahrzeug() {
+    this.start = function() {
+      // Verwende 'addToAusgabe', um "Fahrzeug startet" anzuzeigen.
+      addToAusgabe("Fahrzeug startet");
+    };
+  }
+
+  // Definiere die Funktion 'Auto', die als Konstruktor für Autos dient.
+  function Auto() {
+    Fahrzeug.call(this); // Rufe den 'Fahrzeug'-Konstruktor auf, um 'start' zu erben.
+    this.hupe = function() {
+      // Verwende 'addToAusgabe', um "Auto hupt" anzuzeigen.
+      addToAusgabe("Auto hupt");
+    };
+  }
+
+  // Erstelle eine neue Instanz von 'Auto'.
+  const meinAuto = new Auto();
+
+  // Rufe die Methoden 'start' und 'hupe' auf.
+  meinAuto.start(); // Zeigt "Fahrzeug startet" auf der Webseite
+  meinAuto.hupe();  // Zeigt "Auto hupt" auf der Webseite
+</script>
+</body>
+</html>

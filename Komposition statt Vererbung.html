@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Komposition in JavaScript</title>
+</head>
+<body>
+<div id="ausgabe"></div> <!-- Bereich für die Ausgabe der Ergebnisse -->
+
+<script>
+  // Funktion zum Hinzufügen von Text zum Ausgabebereich
+  function addToAusgabe(message) {
+    const ausgabeElement = document.getElementById('ausgabe');
+    ausgabeElement.innerHTML += message + '<br>';
+  }
+
+  // Definiere ein Fahrzeug-Objekt, das als Basis dient
+  const fahrzeugVerhalten = {
+    start() {
+      addToAusgabe("Fahrzeug startet");
+    }
+  };
+
+  // Erstelle ein Auto-Objekt durch Komposition
+  function erstelleAuto() {
+    let auto = Object.create(fahrzeugVerhalten);
+    auto.hupe = function() {
+      addToAusgabe("Auto hupt");
+    };
+    return auto;
+  }
+
+  // Verwende die Komposition, um ein Auto zu erstellen
+  const meinAuto = erstelleAuto();
+
+  // Rufe die Methoden 'start' und 'hupe' auf
+  meinAuto.start(); // Zeigt "Fahrzeug startet" auf der Webseite
+  meinAuto.hupe();  // Zeigt "Auto hupt" auf der Webseite
+</script>
+</body>
+</html>
